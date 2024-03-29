@@ -4,8 +4,11 @@ const users = require("../models/userSchema");
 const moment = require("moment");
 const users1 = require("../models/dataEnterNusury");
 
+const ukgLkgData = require("../models/ukgLkgSchema");
+const sixToEight = require("../models/sixToEight");
+
 // ===============================================================
-// PRIMARY
+// nursery
 
 router.post("/register", async (req, res) => {
   // console.log(req.body);
@@ -86,6 +89,159 @@ router.post("/register", async (req, res) => {
     // }
     // else {
     const adduser = new users({
+      studentId,
+      studentName,
+      fatherName,
+      motherName,
+      mbl,
+      address,
+      rollNumber,
+      dob,
+      classSection,
+      engUnit1Wrtn,
+      engUnit2Wrtn,
+      engFyWrtn,
+      engHyWrtn,
+      engUnit1orl,
+      engUnit2orl,
+      engFyorl,
+      engHyorl,
+      HindiUnit1wrtn,
+      HindiUnit2wrtn,
+      HindiFywrtn,
+      HindiHywrtn,
+      HindiUnit1orl,
+      HindiUnit2orl,
+      HindiFyorl,
+      HindiHyorl,
+      mathUnit1wrtn,
+      mathUnit2wrtn,
+      mathFywrtn,
+      mathHywrtn,
+      MathUnit1orl,
+      MathUnit2orl,
+      MathFyorl,
+      MathHyorl,
+      gkUnit1wrtn,
+      gkUnit2wrtn,
+      gkFywrtn,
+      gkHywrtn,
+      gkUnit1orl,
+      gkUnit2orl,
+      gkFyorl,
+      gkHyorl,
+      UrduUnit1wrtn,
+      UrduUnit2wrtn,
+      UrduFywrtn,
+      UrduHywrtn,
+      UrduUnit1orl,
+      UrduUnit2orl,
+      UrduFyorl,
+      UrduHyorl,
+      artUnit1,
+      artUnit2,
+      artFy,
+      artHy,
+      twdHalfYear,
+      twdFinalYear,
+      twdTotal,
+      tsaHalfYear,
+      tsaFinalYear,
+      tsaTotal,
+      result,
+      session,
+    });
+    await adduser.save();
+    res.status(201).json("useradd");
+    // console.log(adduser);
+
+    // }
+  } catch (error) {
+    res.status(422).json(error);
+  }
+});
+
+// ukg lkg
+
+router.post("/registerUkgLkg", async (req, res) => {
+  // console.log(req.body);
+
+  const {
+    studentId,
+    studentName,
+    fatherName,
+    motherName,
+    mbl,
+    address,
+    rollNumber,
+    dob,
+    classSection,
+    engUnit1Wrtn,
+    engUnit2Wrtn,
+    engFyWrtn,
+    engHyWrtn,
+    engUnit1orl,
+    engUnit2orl,
+    engFyorl,
+    engHyorl,
+    HindiUnit1wrtn,
+    HindiUnit2wrtn,
+    HindiFywrtn,
+    HindiHywrtn,
+    HindiUnit1orl,
+    HindiUnit2orl,
+    HindiFyorl,
+    HindiHyorl,
+    mathUnit1wrtn,
+    mathUnit2wrtn,
+    mathFywrtn,
+    mathHywrtn,
+    MathUnit1orl,
+    MathUnit2orl,
+    MathFyorl,
+    MathHyorl,
+    gkUnit1wrtn,
+    gkUnit2wrtn,
+    gkFywrtn,
+    gkHywrtn,
+    gkUnit1orl,
+    gkUnit2orl,
+    gkFyorl,
+    gkHyorl,
+    UrduUnit1wrtn,
+    UrduUnit2wrtn,
+    UrduFywrtn,
+    UrduHywrtn,
+    UrduUnit1orl,
+    UrduUnit2orl,
+    UrduFyorl,
+    UrduHyorl,
+    artUnit1,
+    artUnit2,
+    artFy,
+    artHy,
+    twdHalfYear,
+    twdFinalYear,
+    twdTotal,
+    tsaHalfYear,
+    tsaFinalYear,
+    tsaTotal,
+    result,
+    session,
+  } = req.body;
+
+  if (!studentName) {
+    res.status(422).json("plz fill all  data");
+  }
+
+  try {
+    // const preuser = await users.findOne({ rollNumber: rollNumber });
+    // console.log(preuser);
+    // if (preuser) {
+    //     res.status(422).json('user alreDY PRESENT');
+    // }
+    // else {
+    const adduser = new ukgLkgData({
       studentId,
       studentName,
       fatherName,
@@ -294,6 +450,142 @@ router.post("/register2", async (req, res) => {
   }
 });
 
+// sixToEight
+router.post("/registersixToEight", async (req, res) => {
+  // console.log(req.body);
+
+  const {
+    studentId,
+    studentName,
+    fatherName,
+    motherName,
+    mbl,
+    address,
+    rollNumber,
+    dob,
+    classSection,
+    engUnit1,
+    engUnit2,
+    engFy,
+    engHy,
+    hindiUnit1,
+    hindiUnit2,
+    hindiFy,
+    hindiHy,
+    mathUnit1,
+    mathUnit2,
+    mathFy,
+    mathHy,
+    sciUnit1,
+    sciUnit2,
+    sciFy,
+    sciHy,
+    gkUnit1,
+    gkUnit2,
+    gkFy,
+    gkHy,
+    urduUnit1,
+    urduUnit2,
+    urduFy,
+    urduHy,
+    sstUnit1,
+    sstUnit2,
+    sstFy,
+    sstHy,
+    cmptrUnit1,
+    cmptrUnit2,
+    cmptrFy,
+    cmptrHy,
+    artUnit1,
+    artUnit2,
+    artFy,
+    artHy,
+    twdHalfYear,
+    twdFinalYear,
+    twdTotal,
+    tsaHalfYear,
+    tsaFinalYear,
+    tsaTotal,
+    result,
+    session,
+  } = req.body;
+
+  if (!studentName) {
+    res.status(422).json("plz fill all  data");
+  }
+
+  try {
+    // const preuser = await users.findOne({ rollNumber: rollNumber });
+    // console.log(preuser);
+    // if (preuser) {
+    //     res.status(422).json('user alreDY PRESENT');
+    // }
+    // else {
+    const adduser1 = new sixToEight({
+      studentId,
+      studentName,
+      fatherName,
+      motherName,
+      mbl,
+      address,
+      rollNumber,
+      dob,
+      classSection,
+      engUnit1,
+      engUnit2,
+      engFy,
+      engHy,
+      hindiUnit1,
+      hindiUnit2,
+      hindiFy,
+      hindiHy,
+      mathUnit1,
+      mathUnit2,
+      mathFy,
+      mathHy,
+      sciUnit1,
+      sciUnit2,
+      sciFy,
+      sciHy,
+      gkUnit1,
+      gkUnit2,
+      gkFy,
+      gkHy,
+      urduUnit1,
+      urduUnit2,
+      urduFy,
+      urduHy,
+      sstUnit1,
+      sstUnit2,
+      sstFy,
+      sstHy,
+      cmptrUnit1,
+      cmptrUnit2,
+      cmptrFy,
+      cmptrHy,
+      artUnit1,
+      artUnit2,
+      artFy,
+      artHy,
+      twdHalfYear,
+      twdFinalYear,
+      twdTotal,
+      tsaHalfYear,
+      tsaFinalYear,
+      tsaTotal,
+      result,
+      session,
+    });
+    await adduser1.save();
+    res.status(201).json("useradd");
+    // console.log(adduser);
+
+    // }
+  } catch (error) {
+    res.status(422).json(error);
+  }
+});
+
 // ==================================================================
 
 // get user data
@@ -334,6 +626,54 @@ router.get("/getdata", async (req, res) => {
 
     res.status(200).json({
       data: preuser1,
+      currentPage: page,
+      totalPages: totalPages,
+      totalCount: totalCount,
+    });
+
+    // console.log(preuser1);
+  } catch (error) {
+    res.status(422).json(error);
+  }
+});
+
+// get data ukg lkg
+
+router.get("/getdataUkgLkg", async (req, res) => {
+  try {
+    let { page, limit, searchQuery } = req.query;
+    page = parseInt(page) || 1;
+    limit = parseInt(limit) || 10; // default limit is 10
+
+    const skip = (page - 1) * limit;
+
+    let query = {};
+
+    // Check if searchQuery exists and add search functionality
+    if (searchQuery) {
+      query = {
+        $or: [
+          { studentName: { $regex: searchQuery, $options: "i" } }, // Search by name (case-insensitive)
+          { fatherName: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          { motherName: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          { mbl: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          { session: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          // Add more fields as needed
+        ],
+      };
+    }
+
+    const totalCount = await ukgLkgData.countDocuments(query);
+    const totalPages = Math.ceil(totalCount / limit);
+
+    const preuser12 = await ukgLkgData
+      .find(query)
+      .sort({ _id: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    res.status(200).json({
+      data: preuser12,
       currentPage: page,
       totalPages: totalPages,
       totalCount: totalCount,
@@ -392,6 +732,53 @@ router.get("/getdata1", async (req, res) => {
     res.status(422).json(error);
   }
 });
+// get data from form2 // sixToEight
+
+router.get("/getdatasixToEight", async (req, res) => {
+  try {
+    let { page, limit, searchQuery } = req.query;
+    page = parseInt(page) || 1;
+    limit = parseInt(limit) || 10; // default limit is 10
+
+    const skip = (page - 1) * limit;
+
+    let query = {};
+
+    // Check if searchQuery exists and add search functionality
+    if (searchQuery) {
+      query = {
+        $or: [
+          { studentName: { $regex: searchQuery, $options: "i" } }, // Search by name (case-insensitive)
+          { fatherName: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          { motherName: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          { mbl: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          { session: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          // Add more fields as needed
+        ],
+      };
+    }
+
+    const totalCount = await sixToEight.countDocuments(query);
+    const totalPages = Math.ceil(totalCount / limit);
+
+    const preuser23 = await sixToEight
+      .find(query)
+      .sort({ _id: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    res.status(200).json({
+      data: preuser23,
+      currentPage: page,
+      totalPages: totalPages,
+      totalCount: totalCount,
+    });
+
+    // console.log(preuser1);
+  } catch (error) {
+    res.status(422).json(error);
+  }
+});
 
 // get single user data
 // primary
@@ -401,6 +788,21 @@ router.get("/getuser/:id", async (req, res) => {
     // console.log(req.params);
     const { id } = req.params;
     const userindividual = await users.findById({ _id: id });
+    // console.log(userindividual);
+    res.status(201).json(userindividual);
+  } catch (error) {
+    res.status(422).json(error);
+  }
+});
+
+// get single user data
+// ukg lkg
+
+router.get("/getuserUkgLkg/:id", async (req, res) => {
+  try {
+    // console.log(req.params);
+    const { id } = req.params;
+    const userindividual = await ukgLkgData.findById({ _id: id });
     // console.log(userindividual);
     res.status(201).json(userindividual);
   } catch (error) {
@@ -422,6 +824,20 @@ router.get("/getuser1/:id", async (req, res) => {
   }
 });
 
+// get single user data sixToEight
+
+router.get("/getusersixToEight/:id", async (req, res) => {
+  try {
+    // console.log(req.params);
+    const { id } = req.params;
+    const userindividual = await sixToEight.findById({ _id: id });
+    // console.log(userindividual);
+    res.status(201).json(userindividual);
+  } catch (error) {
+    res.status(422).json(error);
+  }
+});
+
 // update data
 // primary
 
@@ -429,6 +845,22 @@ router.patch("/updateuser/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const updateduser = await users.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    // console.log(updateduser);
+    res.status(201).json(updateduser);
+  } catch (error) {
+    res.status(422).json(error);
+  }
+});
+
+// update data
+// ukg lkg
+
+router.patch("/updateuserUkgLkg/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updateduser = await ukgLkgData.findByIdAndUpdate(id, req.body, {
       new: true,
     });
     // console.log(updateduser);
@@ -453,6 +885,21 @@ router.patch("/updateuser1/:id", async (req, res) => {
   }
 });
 
+// update data form2 sixToEight
+
+router.patch("/updateusersixToEight/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updateduser = await sixToEight.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    // console.log(updateduser);
+    res.status(201).json(updateduser);
+  } catch (error) {
+    res.status(422).json(error);
+  }
+});
+
 // delete user data
 // primary
 
@@ -466,12 +913,39 @@ router.delete("/deleteuser/:id", async (req, res) => {
     res.status(422).json(error);
   }
 });
+
+// delete user data
+// ukg lkg
+
+router.delete("/deleteuserUkgLkg/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteuser = await ukgLkgData.findByIdAndDelete({ _id: id });
+    // console.log(deleteuser);
+    res.status(201).json(deleteuser);
+  } catch (error) {
+    res.status(422).json(error);
+  }
+});
 // delete user data
 
 router.delete("/deleteuser1/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deleteuser = await users1.findByIdAndDelete({ _id: id });
+    // console.log(deleteuser);
+    res.status(201).json(deleteuser);
+  } catch (error) {
+    res.status(422).json(error);
+  }
+});
+
+// delete user data sixToEight
+
+router.delete("/deleteusersixToEight/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteuser = await sixToEight.findByIdAndDelete({ _id: id });
     // console.log(deleteuser);
     res.status(201).json(deleteuser);
   } catch (error) {
