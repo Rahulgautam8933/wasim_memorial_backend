@@ -611,6 +611,7 @@ router.get("/getdata", async (req, res) => {
           { mbl: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           { session: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           { classSection: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          { rollNumber: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           // Add more fields as needed
         ],
       };
@@ -660,6 +661,7 @@ router.get("/getdataUkgLkg", async (req, res) => {
           { mbl: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           { session: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           { classSection: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          { rollNumber: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           // Add more fields as needed
         ],
       };
@@ -709,6 +711,7 @@ router.get("/getdata1", async (req, res) => {
           { mbl: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           { session: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           { classSection: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          { rollNumber: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           // Add more fields as needed
         ],
       };
@@ -757,6 +760,7 @@ router.get("/getdatasixToEight", async (req, res) => {
           { mbl: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           { session: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           { classSection: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
+          { rollNumber: { $regex: searchQuery, $options: "i" } }, // Search by email (case-insensitive)
           // Add more fields as needed
         ],
       };
